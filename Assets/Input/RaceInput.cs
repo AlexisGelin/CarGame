@@ -55,7 +55,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": "" Jump"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""aa7b9aaa-888d-4da5-a61e-81eb3a6bd849"",
                     ""expectedControlType"": ""Button"",
@@ -158,7 +158,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": "" Jump"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -207,7 +207,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": "" Jump"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""6f9c7a2a-c091-4ce0-847a-9a573c75ddde"",
                     ""expectedControlType"": ""Button"",
@@ -240,7 +240,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""d2426dc3-bbf1-4ea9-b80e-4b692a83c3dc"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -251,7 +251,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""3c50bd0e-1923-4ce4-86d6-de76b74d58f5"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -310,7 +310,7 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": "" Jump"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -347,14 +347,14 @@ public partial class @RaceInput : IInputActionCollection2, IDisposable
         m_P1_Accelerate = m_P1.FindAction("Accelerate", throwIfNotFound: true);
         m_P1_Turn = m_P1.FindAction("Turn", throwIfNotFound: true);
         m_P1_Nitro = m_P1.FindAction("Nitro", throwIfNotFound: true);
-        m_P1_Jump = m_P1.FindAction(" Jump", throwIfNotFound: true);
+        m_P1_Jump = m_P1.FindAction("Jump", throwIfNotFound: true);
         m_P1_Respawn = m_P1.FindAction("Respawn", throwIfNotFound: true);
         // P2
         m_P2 = asset.FindActionMap("P2", throwIfNotFound: true);
         m_P2_Accelerate = m_P2.FindAction("Accelerate", throwIfNotFound: true);
         m_P2_Turn = m_P2.FindAction("Turn", throwIfNotFound: true);
         m_P2_Nitro = m_P2.FindAction("Nitro", throwIfNotFound: true);
-        m_P2_Jump = m_P2.FindAction(" Jump", throwIfNotFound: true);
+        m_P2_Jump = m_P2.FindAction("Jump", throwIfNotFound: true);
         m_P2_Respawn = m_P2.FindAction("Respawn", throwIfNotFound: true);
     }
 

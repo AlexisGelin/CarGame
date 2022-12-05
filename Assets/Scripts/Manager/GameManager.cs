@@ -1,10 +1,12 @@
 using BaseTemplate.Behaviours;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum GameState { START, PLAY, END }
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public List<PlayerController> _players;
 
     public GameState gameState;
     void Awake()
@@ -14,8 +16,6 @@ public class GameManager : MonoSingleton<GameManager>
         RaceManager.Instance.Init();
 
         UIManager.Instance.Init();
-
-        CameraSwitch.Instance.Init();
     }
 
     void Update()
@@ -35,9 +35,12 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.PLAY;
 
-        PlayerController.Instance.Init();
+        foreach (PlayerController player in _players)
+        {
+            player.Init();
+        }
 
-        CameraSwitch.Instance.switchCamera("GameCamera");
+
 
         UIManager.Instance.StartGame();
     }
@@ -46,11 +49,14 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.END;
 
-        PlayerController.Instance.EndRace();
+        foreach (PlayerController player in _players)
+        {
+            player.Init();
+        }
 
         UIManager.Instance.EndGame();
 
-        CameraSwitch.Instance.switchCamera("EndCamera");
+
 
     }
 }

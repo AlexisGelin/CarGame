@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": " Jump",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "aa7b9aaa-888d-4da5-a61e-81eb3a6bd849",
                     "expectedControlType": "Button",
@@ -136,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": " Jump",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -185,7 +185,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": " Jump",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "6f9c7a2a-c091-4ce0-847a-9a573c75ddde",
                     "expectedControlType": "Button",
@@ -218,7 +218,7 @@
                 {
                     "name": "negative",
                     "id": "d2426dc3-bbf1-4ea9-b80e-4b692a83c3dc",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -229,7 +229,7 @@
                 {
                     "name": "positive",
                     "id": "3c50bd0e-1923-4ce4-86d6-de76b74d58f5",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -288,7 +288,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": " Jump",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

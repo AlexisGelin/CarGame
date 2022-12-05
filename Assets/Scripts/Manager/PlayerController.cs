@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using DG.Tweening;
 using System.Collections.Generic;
 
-public class PlayerController : MonoSingleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody _rb;
     [SerializeField] int _speed, _rotateSpeed, _jumpForce;
@@ -27,7 +27,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public int PlayerID = 1;
 
     InputActionMap inputActionMap; 
-    InputAction InputAction_jump;
+    InputAction InputAction_jump, InputAction_respawn, InputAction_nitro;
 
 
     public void Init()
@@ -50,7 +50,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         turn.performed += OnRotatePressed;
 
         InputAction_jump = inputActionMap.FindAction("Jump");
-
+        InputAction_respawn = inputActionMap.FindAction("Respawn");
+        InputAction_nitro = inputActionMap.FindAction("Nitro");
 
         _maxSpeed = _speed;
         em = _nitroFX.emission;
@@ -76,7 +77,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (_isRaceStarted == false) return;
 
 
-        if (_raceInput.P1.Nitro.IsPressed())
+        if (InputAction_nitro.IsPressed())
         {
             em.enabled = true;
             _isNitro = true;
@@ -87,11 +88,10 @@ public class PlayerController : MonoSingleton<PlayerController>
             _isNitro = false;
         }
 
-        if (_raceInput.P1.Respawn.triggered)
+        if (InputAction_respawn.triggered)
         {
             RaceManager.Instance.RespawnAtLastCheckPoint();
         }
-
 
         if (InputAction_jump.triggered) _isJumping = true;
         else _isJumping = false;

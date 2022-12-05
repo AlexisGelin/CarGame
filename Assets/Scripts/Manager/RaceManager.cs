@@ -67,9 +67,13 @@ public class RaceManager : MonoSingleton<RaceManager>
 
     public void RespawnAtLastCheckPoint()
     {
-        PlayerController.Instance.transform.position = LastCheckpoint.transform.position + new Vector3(0, 2, 0);
-        PlayerController.Instance.transform.rotation = LastCheckpoint.transform.rotation;
-        PlayerController.Instance.Rb.velocity = Vector3.zero;
-        PlayerController.Instance.Rb.angularVelocity = Vector3.zero;
+
+        foreach (PlayerController player in GameManager.Instance._players)
+        {
+            player.transform.position = LastCheckpoint.transform.position + new Vector3(0, 2, 0);
+            player.transform.rotation = LastCheckpoint.transform.rotation;
+            player.Rb.velocity = Vector3.zero;
+            player.Rb.angularVelocity = Vector3.zero;
+        }
     }
 }
