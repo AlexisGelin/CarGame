@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _speed, _rotateSpeed, _jumpForce;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] ParticleSystem _nitroFX;
+    public UIManager _UIManager;
     public Runner Runner;
 
     [SerializeField] List<WheelCollider> _wheelColliders;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         _maxSpeed = _speed;
         em = _nitroFX.emission;
 
-        StartCoroutine(UIManager.Instance.GameCanvas.DoStartCountdown());
+        StartCoroutine(_UIManager.GameCanvas.DoStartCountdown());
         StartCoroutine(StartRun());
     }
 
@@ -131,7 +132,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        UIManager.Instance.GameCanvas.UpdateSpeedText(Mathf.RoundToInt(_rb.velocity.magnitude));
+        _UIManager.GameCanvas.UpdateSpeedText(Mathf.RoundToInt(_rb.velocity.magnitude));
 
         _audioSource.volume = .5f + _rb.velocity.magnitude / 10;
         _audioSource.pitch = 1f + _rb.velocity.magnitude / 50;
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
         _audioSource.DOFade(.5f, 1);
         yield return new WaitForSeconds(3f);
         _isRaceStarted = true;
-        UIManager.Instance.GameCanvas._isRacing = true;
+        _UIManager.GameCanvas._isRacing = true;
     }
 
     public void EndRace()
@@ -152,6 +153,6 @@ public class PlayerController : MonoBehaviour
 
         _audioSource.DOFade(0, .3f).OnComplete(() => _audioSource.Stop());
 
-        UIManager.Instance.GameCanvas._isRacing = false;
+        _UIManager.GameCanvas._isRacing = false;
     }
 }

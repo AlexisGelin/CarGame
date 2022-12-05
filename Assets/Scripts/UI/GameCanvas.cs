@@ -6,7 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class GameCanvas : MonoBehaviour
 {
-    [SerializeField] TMP_Text _lapText, _speedText, _playerPos, _countdownText, _timerText;
+    [SerializeField] TMP_Text _lapText, _speedText, _playerPos, _countdownText;
 
     public float timer;
     public bool _isRacing;
@@ -18,15 +18,11 @@ public class GameCanvas : MonoBehaviour
         timer = 0;
     }
 
-    private void Update()
+    public void SetPlayerRank(int i)
     {
-        if (_isRacing)
-        {
-            timer += Time.deltaTime;
-
-            _timerText.text = timer.ToString("F2") + "s";
-        }
+        _playerPos.text = i.ToString();
     }
+
 
     public void UpdateLapText()
     {

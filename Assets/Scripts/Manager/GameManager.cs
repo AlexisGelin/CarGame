@@ -7,6 +7,7 @@ public enum GameState { START, PLAY, END }
 public class GameManager : MonoSingleton<GameManager>
 {
     public List<PlayerController> _players;
+    public List<UIManager> UIManagers;
 
     public GameState gameState;
     void Awake()
@@ -15,7 +16,10 @@ public class GameManager : MonoSingleton<GameManager>
 
         RaceManager.Instance.Init();
 
-        UIManager.Instance.Init();
+        foreach (UIManager uimanager in UIManagers)
+        {
+            uimanager.Init();
+        }
     }
 
     void Update()
@@ -41,8 +45,10 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
 
-
-        UIManager.Instance.StartGame();
+        foreach (UIManager uimanager in UIManagers)
+        {
+            uimanager.StartGame();
+        }
     }
 
     public void EndGame()
@@ -54,8 +60,10 @@ public class GameManager : MonoSingleton<GameManager>
             player.Init();
         }
 
-        UIManager.Instance.EndGame();
-
+        foreach (UIManager uimanager in UIManagers)
+        {
+            uimanager.EndGame();
+        }
 
 
     }

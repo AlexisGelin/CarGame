@@ -9,6 +9,8 @@ public class Checkpoint : MonoBehaviour
 
     [SerializeField] Type type;
     [SerializeField] List<ParticleSystem> particleOnFinishLap;
+    [SerializeField] int index;
+    [SerializeField] Checkpoint nextCheckpoint;
 
     bool isPlayerGoesThrough;
 
@@ -32,7 +34,7 @@ public class Checkpoint : MonoBehaviour
                 particle.Play();
             }
         }
-        if (other.gameObject.layer == 10) other.gameObject.GetComponent<Runner>().UpdateLastCheckpoint(this);
+        if (other.gameObject.layer == 10) other.gameObject.GetComponent<Runner>().UpdateLastCheckpoint(this, nextCheckpoint, index);
 
         if (type == Type.Start && RaceManager.Instance.CheckForLap())
         {

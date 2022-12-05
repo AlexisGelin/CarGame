@@ -1,6 +1,7 @@
 using BaseTemplate.Behaviours;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RaceManager : MonoSingleton<RaceManager>
@@ -24,14 +25,31 @@ public class RaceManager : MonoSingleton<RaceManager>
 
     private void Update()
     {
-        _runners.Sort((p1, p2) => p1.ActualCheckpoint.CompareTo(p2.ActualCheckpoint));
+        _runners = _runners.OrderByDescending(x => x.ActualCheckpoint).ToList();
 
+
+        for (int i = 0; i < _runners.Count - 1; i++)
+        {
+            float distPlayer1 = Vector3.Distance(_runners[i].NextCheckpoint.transform.position, _runners[i].transform.position);
+            float distPlayer2 = Vector3.Distance(_runners[i + 1].NextCheckpoint.transform.position, _runners[i + 1].transform.position);
+
+            if (distPlayer1 > distPlayer2)
+            {
+                var tempRunner = _runners[i + 1];
+                _runners[i + 1] = _runners[i];
+                _runners[i] = tempRunner;
+
+                i = 0;
+            }
+
+        }
+
+        for (int i = 0; i < _runners.Count; i++)
+        {
+            _runners[i].playerController._UIManager.GameCanvas.SetPlayerRank(i + 1);
+
+        }
     }
-
-
-
-
-
 
     public bool CheckForLap()
     {
@@ -45,7 +63,6 @@ public class RaceManager : MonoSingleton<RaceManager>
 
         _numberOfLap++;
 
-        UIManager.Instance.GameCanvas.UpdateLapText();
 
         foreach (var checkpoint in _checkpoints)
         {

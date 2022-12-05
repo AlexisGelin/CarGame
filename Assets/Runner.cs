@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
+    public PlayerController playerController;
     public int ActualCheckpoint;
-    public Checkpoint LastCheckpoint;
+    public Checkpoint LastCheckpoint, NextCheckpoint;
+    public int position;
 
-
-    private void Start()
+    private void Start() => LastCheckpoint = RaceManager.Instance._checkpoints[0];
+    
+    public void UpdateLastCheckpoint(Checkpoint lastCheckpoint, Checkpoint nextCheckpoint, int indexCheckpoint)
     {
-        LastCheckpoint = RaceManager.Instance._checkpoints[0];
-
+        ActualCheckpoint = indexCheckpoint;
+        LastCheckpoint = lastCheckpoint;
+        NextCheckpoint = nextCheckpoint;
     }
 
-    public void UpdateLastCheckpoint(Checkpoint checkpoint)
-    {
-        LastCheckpoint = checkpoint;
-    }
+
+
 }

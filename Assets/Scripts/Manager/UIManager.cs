@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoSingleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     public MenuCanvas MenuCanvas;
     public GameCanvas GameCanvas;
@@ -31,13 +31,15 @@ public class UIManager : MonoSingleton<UIManager>
         SwitchToCanvas(EndCanvasGroup);
     }
 
+
+
+
     public void SwitchToCanvas(CanvasGroup toCanvas)
     {
         if (actualCanvasGroup == toCanvas) return;
 
         if (toCanvas == MenuCanvasGroup) MenuCanvas.Init();
         if (toCanvas == GameCanvasGroup) GameCanvas.Init();
-        if (toCanvas == EndCanvasGroup) EndCanvas.Init();
 
         actualCanvasGroup.interactable = false;
         actualCanvasGroup.blocksRaycasts = false;
