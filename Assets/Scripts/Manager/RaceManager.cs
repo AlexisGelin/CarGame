@@ -5,18 +5,16 @@ using UnityEngine;
 
 public class RaceManager : MonoSingleton<RaceManager>
 {
-    [SerializeField] List<Checkpoint> _checkpoints;
+    public List<Checkpoint> _checkpoints;
     [SerializeField] List<Runner> _runners;
 
     [SerializeField] int _numberOfLap;
 
     public int NumberOfLap { get => _numberOfLap; }
 
-    public Checkpoint LastCheckpoint;
 
     public void Init()
     {
-        LastCheckpoint = _checkpoints[0];
 
         foreach (var checkpoint in _checkpoints)
         {
@@ -26,16 +24,13 @@ public class RaceManager : MonoSingleton<RaceManager>
 
     private void Update()
     {
-        _runners.Sort((p1,p2) => p1.ActualCheckpoint.CompareTo(p2.ActualCheckpoint));
+        _runners.Sort((p1, p2) => p1.ActualCheckpoint.CompareTo(p2.ActualCheckpoint));
 
     }
 
 
 
-    public void UpdateLastCheckpoint(Checkpoint checkpoint)
-    {
-        LastCheckpoint = checkpoint;
-    }
+
 
 
     public bool CheckForLap()
@@ -65,15 +60,13 @@ public class RaceManager : MonoSingleton<RaceManager>
         return true;
     }
 
-    public void RespawnAtLastCheckPoint()
+    public void RespawnAtLastCheckPoint(PlayerController player)
     {
 
-        foreach (PlayerController player in GameManager.Instance._players)
-        {
-            player.transform.position = LastCheckpoint.transform.position + new Vector3(0, 2, 0);
-            player.transform.rotation = LastCheckpoint.transform.rotation;
-            player.Rb.velocity = Vector3.zero;
-            player.Rb.angularVelocity = Vector3.zero;
-        }
+        player.transform.position = player.Runner.LastCheckpoint.transform.position + new Vector3(0, 2, 0);
+        player.transform.rotation = player.Runner.LastCheckpoint.transform.rotation;
+        player.Rb.velocity = Vector3.zero;
+        player.Rb.angularVelocity = Vector3.zero;
+
     }
 }

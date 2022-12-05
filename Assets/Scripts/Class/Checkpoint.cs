@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,6 @@ public class Checkpoint : MonoBehaviour
 
     bool isPlayerGoesThrough;
 
-
-    void CheckCheckpoint()
-    {
-        isPlayerGoesThrough = true;
-
-        RaceManager.Instance.UpdateLastCheckpoint(this);
-    }
 
     public void ResetCheckpoint()
     {
@@ -38,8 +32,7 @@ public class Checkpoint : MonoBehaviour
                 particle.Play();
             }
         }
-
-        CheckCheckpoint();
+        if (other.gameObject.layer == 10) other.gameObject.GetComponent<Runner>().UpdateLastCheckpoint(this);
 
         if (type == Type.Start && RaceManager.Instance.CheckForLap())
         {

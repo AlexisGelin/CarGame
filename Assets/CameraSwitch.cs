@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class CameraSwitch : MonoSingleton<CameraSwitch>
 {
-    [SerializeField] private string cameraNameToPlayFirst = "MenuCamera";
+/*    [SerializeField] private string cameraNameToPlayFirst = "MenuCamera";
 
     [SerializeField] List<CameraItem> cameraItem;
 
@@ -48,5 +48,5 @@ public class CameraSwitch : MonoSingleton<CameraSwitch>
         {
             Debug.LogWarning("Camera introuvable");
         }
-    }
+    }*/
 }

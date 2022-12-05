@@ -6,6 +6,6 @@ public class RespawnArea : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>() != null) RaceManager.Instance.RespawnAtLastCheckPoint();
+        if (collision.gameObject.GetComponent<PlayerController>() != null) RaceManager.Instance.RespawnAtLastCheckPoint(collision.gameObject.GetComponent<PlayerController>());
     }
 }

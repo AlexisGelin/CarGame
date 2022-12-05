@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _speed, _rotateSpeed, _jumpForce;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] ParticleSystem _nitroFX;
+    public Runner Runner;
 
     [SerializeField] List<WheelCollider> _wheelColliders;
 
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
         if (InputAction_respawn.triggered)
         {
-            RaceManager.Instance.RespawnAtLastCheckPoint();
+            RaceManager.Instance.RespawnAtLastCheckPoint(this);
         }
 
         if (InputAction_jump.triggered) _isJumping = true;
